@@ -1,0 +1,13 @@
+# Thư mục build
+/bin/
+/out/
+/target/
+
+# IDE files
+*.iml
+.idea/
+.vscode/
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
