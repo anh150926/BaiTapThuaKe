@@ -1,5 +1,5 @@
 @startuml
-title Hệ thống Quản lý Cửa hàng - Cập nhật hành vi checkout từng phương thức thanh toán
+title Hệ thống Quản lý Cửa hàng 
 
 class Product {
     - id: String
