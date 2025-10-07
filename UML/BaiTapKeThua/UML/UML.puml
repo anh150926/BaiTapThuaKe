@@ -1,0 +1,66 @@
+@startuml
+title Hệ thống Quản lý Cửa hàng - Cập nhật hành vi checkout từng phương thức thanh toán
+
+class Product {
+    - id: String
+    - name: String
+    - price: double
+    + Product(id: String, name: String, price: double)
+    + getPrice(): double
+    + toString(): String
+}
+
+class ElectronicProduct {
+    - imei: String
+    - warrantyPeriod: int
+    + ElectronicProduct(id: String, name: String, price: double, imei: String, warrantyPeriod: int)
+    + toString(): String
+}
+
+class FoodProduct {
+    - expiryDate: String
+    + FoodProduct(id: String, name: String, price: double, expiryDate: String)
+    + toString(): String
+}
+
+class Payment {
+    + pay(amount: double): void
+}
+
+class CashPayment {
+    + pay(amount: double): void <<override>> 
+}
+
+class CreditCardPayment {
+    + pay(amount: double): void <<override>>
+}
+
+class MomoPayment {
+    + pay(amount: double): void <<override>>
+}
+
+class ZaloPayPayment {
+    + pay(amount: double): void <<override>>
+}
+
+class Order {
+    - customerName: String
+    - productList: ArrayList<Product>
+    - payment: Payment
+    + Order(customerName: String, payment: Payment)
+    + addProduct(p: Product): void
+    + getTotalAmount(): double
+    + checkout(): void
+}
+
+Product <|-- ElectronicProduct
+Product <|-- FoodProduct
+
+Payment <|-- CashPayment
+Payment <|-- CreditCardPayment
+Payment <|-- MomoPayment
+Payment <|-- ZaloPayPayment
+
+Order --> Product : contains
+Order --> Payment : uses
+@enduml
